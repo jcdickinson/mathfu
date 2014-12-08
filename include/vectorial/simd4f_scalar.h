@@ -101,6 +101,47 @@ vectorial_inline simd4f simd4f_rsqrt(simd4f v) {
     return s;
 }
 
+vectorial_inline int simd4f_getsigns(simd4f v) {
+    int s = signbit(a.w) << 3 | signbit(a.z) << 2 | signbit(a.y) << 1 | signbit(a.x);
+    return s;
+}
+
+// comparison
+
+vectorial_inline simd4f simd4f_eq(simd4f lhs, simd4f rhs) {
+    const unsigned long negNanBits[1] = { 0xffffffff };
+    const float negNan = *(float*)negNanBits;
+    simd4f ret = { lhs.x == rhs.x ? negNan : 0, lhs.y == rhs.y ? negNan : 0, lhs.z == rhs.z ? negNan : 0, lhs.w == rhs.w ? negNan : 0 };
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_lt(simd4f lhs, simd4f rhs) {
+    const unsigned long negNanBits[1] = { 0xffffffff };
+    const float negNan = *(float*)negNanBits;
+    simd4f ret = { lhs.x < rhs.x ? negNan : 0, lhs.y < rhs.y ? negNan : 0, lhs.z < rhs.z ? negNan : 0, lhs.w < rhs.w ? negNan : 0 };
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_gt(simd4f lhs, simd4f rhs) {
+    const unsigned long negNanBits[1] = { 0xffffffff };
+    const float negNan = *(float*)negNanBits;
+    simd4f ret = { lhs.x > rhs.x ? negNan : 0, lhs.y > rhs.y ? negNan : 0, lhs.z > rhs.z ? negNan : 0, lhs.w > rhs.w ? negNan : 0 };
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_le(simd4f lhs, simd4f rhs) {
+  const unsigned long negNanBits[1] = { 0xffffffff };
+  const float negNan = *(float*)negNanBits;
+  simd4f ret = { lhs.x <= rhs.x ? negNan : 0, lhs.y <= rhs.y ? negNan : 0, lhs.z <= rhs.z ? negNan : 0, lhs.w <= rhs.w ? negNan : 0 };
+  return ret;
+}
+
+vectorial_inline simd4f simd4f_ge(simd4f lhs, simd4f rhs) {
+  const unsigned long negNanBits[1] = { 0xffffffff };
+  const float negNan = *(float*)negNanBits;
+  simd4f ret = { lhs.x >= rhs.x ? negNan : 0, lhs.y >= rhs.y ? negNan : 0, lhs.z >= rhs.z ? negNan : 0, lhs.w >= rhs.w ? negNan : 0 };
+  return ret;
+}
 
 // arithmetic
 

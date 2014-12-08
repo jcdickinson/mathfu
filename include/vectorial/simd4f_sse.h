@@ -100,6 +100,37 @@ vectorial_inline simd4f simd4f_splat_w(simd4f v) {
     return s;
 }
 
+vectorial_inline int simd4f_getsigns(simd4f v) {
+    int s = _mm_movemask_ps(v);
+    return s;
+}
+
+// comparison
+
+vectorial_inline simd4f simd4f_eq(simd4f lhs, simd4f rhs) {
+    simd4f ret = _mm_cmpeq_ps(lhs, rhs);
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_lt(simd4f lhs, simd4f rhs) {
+    simd4f ret = _mm_cmplt_ps(lhs, rhs);
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_gt(simd4f lhs, simd4f rhs) {
+    simd4f ret = _mm_cmpgt_ps(lhs, rhs);
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_le(simd4f lhs, simd4f rhs) {
+  simd4f ret = _mm_cmple_ps(lhs, rhs);
+  return ret;
+}
+
+vectorial_inline simd4f simd4f_ge(simd4f lhs, simd4f rhs) {
+  simd4f ret = _mm_cmpge_ps(lhs, rhs);
+  return ret;
+}
 
 // arithmetic
 

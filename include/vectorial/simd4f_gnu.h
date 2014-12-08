@@ -106,6 +106,36 @@ vectorial_inline simd4f simd4f_rsqrt(simd4f v) {
     return simd4f_splat(1.0f) / simd4f_sqrt(v);
 }
 
+vectorial_inline int simd4f_getsigns(simd4f v) {
+    int s = signbit(simd4f_get_w(v)) << 3 | signbit(simd4f_get_z(v)) << 2 | signbit(simd4f_get_y(a) << 1 | signbit(simd4f_get_x(v));
+    return s;
+}
+
+vectorial_inline simd4f simd4f_eq(simd4f lhs, simd4f rhs) {
+    ret = lhs == rhs;
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_lt(simd4f lhs, simd4f rhs) {
+    ret = lhs < rhs;
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_gt(simd4f lhs, simd4f rhs) {
+    ret = lhs > rhs;
+    return ret;
+}
+
+vectorial_inline simd4f simd4f_le(simd4f lhs, simd4f rhs) {
+  ret = lhs <= rhs;
+  return ret;
+}
+
+vectorial_inline simd4f simd4f_ge(simd4f lhs, simd4f rhs) {
+  ret = lhs >= rhs;
+  return ret;
+}
+
 
 
 vectorial_inline simd4f simd4f_add(simd4f lhs, simd4f rhs) {
